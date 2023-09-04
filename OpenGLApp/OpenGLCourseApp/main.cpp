@@ -132,13 +132,13 @@ void CreateObjects()
 
 	CalcAverageNormal(indices, 12, vertices, 32, 8, 5);//creating average normal vector that helps in interpolation and more smooth lines
 
-	Mesh *obj1 = new Mesh();
+	/*Mesh* obj1 = new Mesh();
 	obj1->CreateMesh(vertices, indices, 32, 12);
 	meshList.push_back(obj1);
 
 	Mesh *obj2 = new Mesh();
 	obj2->CreateMesh(vertices, indices, 32, 12);
-	meshList.push_back(obj2);
+	meshList.push_back(obj2); */
 
 	Mesh* obj3 = new Mesh();
 	obj3->CreateMesh(floorVertices, floorIndices, 32, 6);
@@ -152,7 +152,7 @@ void CreateShaders()
 	shaderList.push_back(*shader1);
 }
 
-int main() 
+int main()
 {
 	mainWindow = Window(1366, 768);
 	mainWindow.Initialise();
@@ -170,48 +170,48 @@ int main()
 	plainTexture.LoadTextureA();
 
 	blackHawk = Model();
-	blackHawk.LoadModel("Models/Seahawk.obj");
+	blackHawk.LoadModel("Models/Giant Monster Fish.obj");
 
 	airplane = Model();
-	airplane.LoadModel("Models/girl OBJ.obj");
+	airplane.LoadModel("Models/Intergalactic_Spaceship-(Wavefront).obj");
 
 	shinyMaterial = Material(1.0f, 32.0f);//shine goes multiple square of 2
 	dullMaterial = Material(0.3f, 4.0f);
 
-	mainLight = DirectionalLight(1.0f,1.0f,1.0f,
-					              0.3f,0.6f,
-		                        0.0f,-1.0f,0.0f);
-	unsigned int pointLightCount=0;
+	mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
+		0.3f, 0.5f,
+		0.0f, -1.0f, 0.0f);
+	unsigned int pointLightCount = 0;
 	pointLights[0] = PointLight(0.0f, 0.0f, 1.0f,
-									0.1f, 0.0f,
-									4.0f, 2.0f, 0.0f,
-									0.3f, 0.1f, 0.1f);
+		0.1f, 0.0f,
+		4.0f, 2.0f, 0.0f,
+		0.3f, 0.1f, 0.1f);
 	//pointLightCount++;
-	
+
 	pointLights[1] = PointLight(0.0f, 1.0f, 0.0f,
-									0.1f, 0.00f,
-									-4.0f, 0.0f, 0.0f,
-									0.3f, 0.2f, 0.1f);
+		0.1f, 0.00f,
+		-4.0f, 0.0f, 0.0f,
+		0.3f, 0.2f, 0.1f);
 	//pointLightCount++;
 
 
 	unsigned int spotLightCount = 0;
 	spotLights[0] = SpotLight(1.0f, 1.0f, 1.0f,
-									0.0f, 0.0f,
-									4.0f, 2.0f, 0.0f,
-									0.0f, -1.0f, 0.0f,
-									0.3f, 0.1f, 0.1f, 
-									20.0f);
+		0.0f, 0.0f,
+		4.0f, 2.0f, 0.0f,
+		0.0f, -1.0f, 0.0f,
+		0.3f, 0.1f, 0.1f,
+		20.0f);
 	spotLightCount++;
 
 
 
 
 	GLuint uniformProjection = 0, uniformModel = 0, uniformView = 0, uniformEyePosition = 0,
-									 uniformSpecularIntensity = 0, uniformShininess = 0;
+		uniformSpecularIntensity = 0, uniformShininess = 0;
 	glm::mat4 projection = glm::perspective(glm::radians(45.0f), (GLfloat)mainWindow.getBufferWidth() / mainWindow.getBufferHeight(), 0.1f, 100.0f);
 
-	
+
 
 	// Loop until window closed
 	while (!mainWindow.getShouldClose())
@@ -247,17 +247,19 @@ int main()
 		shaderList[0].SetPointLights(pointLights, pointLightCount);
 		shaderList[0].SetSpotLights(spotLights, spotLightCount);
 
-		
+
 
 		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
 		glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(camera.calculateViewMatrix()));
 		glUniform3f(uniformEyePosition, camera.GetCameraPosition().x, camera.GetCameraPosition().y, camera.GetCameraPosition().z);
-		glm::mat4 model(1.0f);	
 
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -2.5f));
+
+		glm::mat4 model(1.0f);
+
+		/*model = glm::translate(model, glm::vec3(0.0f, 0.0f, -2.5f));
 		//model = glm::scale(model, glm::vec3(0.4f, 0.4f, 1.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		
+
 		brickTexture.UseTexture();
 		shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[0]->RenderMesh();
@@ -268,7 +270,7 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		dirtTexture.UseTexture();
 		dullMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
-		meshList[1]->RenderMesh();
+		meshList[1]->RenderMesh();*/
 
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(0.0f, -2.0f, 0.0f));
@@ -276,18 +278,18 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		plainTexture.UseTexture();
 		dullMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
-		meshList[2]->RenderMesh();
+		meshList[0]->RenderMesh();
 
 
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(0.0f, -2.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(5.0f, -2.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.01f, 0.01f, 0.01f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		blackHawk.RenderModel();
 
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-5.0f, -2.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(-5.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
