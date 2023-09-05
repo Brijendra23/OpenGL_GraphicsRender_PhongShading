@@ -1,0 +1,80 @@
+## .gitignore for C++ OpenGL with Visual Studio Community 2022 on Windows
+
+# Ignore Visual Studio 2022 project files and user settings
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.vs/
+.vs22/
+.vscode/
+
+# Object, Log, and Binary files
+*.dll
+*.exe
+*.obj
+*.pdb
+*.ilk
+*.map
+*.exp
+*.lib
+*.idb
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+
+# Makefile outputs
+*.d
+*.pc
+
+# Windows specific
+Thumbs.db
+ehthumbs.db
+$RECYCLE.BIN/
+*.lnk  # Windows shortcuts
+Desktop.ini
+
+# Unwanted files
+*.log
+*.swp
+*.bak
+*.tmp
+
+# OpenGL specific ignores
+*.bmp
+*.tga
+
+# Debug folders and files
+Debug/
+Release/
+x64/
+x86/
+*.log
+*.tlog
+*.lastbuildstate
+*.opendb
+*.VC.db
+*.VC.VC.opendb
+*.VC.db-shm
+*.VC.db-wal
+
+# CMAKE files
+CMakeCache.txt
+CMakeFiles/
+*.cmake
+/build/
+
+# ImGui
+imgui.ini
