@@ -1,0 +1,10 @@
+﻿  Model.cpp
+D:\OpenGL_Project\VisualStudioCommunity2022\OpenGL_GraphicsRender_PhongShading\OpenGLApp\OpenGLCourseApp\Model.cpp(18,10): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'const std::string'
+D:\OpenGL_Project\VisualStudioCommunity2022\OpenGL_GraphicsRender_PhongShading\OpenGLApp\OpenGLCourseApp\Model.cpp(143,13): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'std::string'
+  main.cpp
+D:\OpenGL_Project\VisualStudioCommunity2022\OpenGL_GraphicsRender_PhongShading\OpenGLApp\OpenGLCourseApp\main.cpp(219,15): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+D:\OpenGL_Project\VisualStudioCommunity2022\OpenGL_GraphicsRender_PhongShading\OpenGLApp\OpenGLCourseApp\main.cpp(280,28): warning C4244: 'argument': conversion from 'GLuint' to 'GLfloat', possible loss of data
+D:\OpenGL_Project\VisualStudioCommunity2022\OpenGL_GraphicsRender_PhongShading\OpenGLApp\OpenGLCourseApp\main.cpp(288,29): warning C4244: 'argument': conversion from 'GLuint' to 'GLfloat', possible loss of data
+D:\OpenGL_Project\VisualStudioCommunity2022\OpenGL_GraphicsRender_PhongShading\OpenGLApp\OpenGLCourseApp\main.cpp(295,29): warning C4244: 'argument': conversion from 'GLuint' to 'GLfloat', possible loss of data
+  Generating Code...
+  OpenGLCourseApp.vcxproj -> D:\OpenGL_Project\VisualStudioCommunity2022\OpenGL_GraphicsRender_PhongShading\OpenGLApp\Debug\OpenGLCourseApp.exe
