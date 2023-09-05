@@ -3,7 +3,7 @@
 
 The application is still under development and is for learning purpose.
 
-*To build the application*
+# **To build the application**
 
-Use Visual Studio 2015 or higher \n
+Use Visual Studio 2015 or higher <br>
 Build in Local Window debugger x86
