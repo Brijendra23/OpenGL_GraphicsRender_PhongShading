@@ -3,6 +3,8 @@
 #include<GL\glew.h>
 #include<glm/glm.hpp>
 
+#include"ShadowMap.h"
+
 
 
 
@@ -11,8 +13,11 @@ class Light
 public:
 	Light();
 
-	Light(GLfloat red, GLfloat green, GLfloat blue, GLfloat aIntensity, GLfloat dIntensity);
+	Light(GLuint shadowWidth, GLuint shadowHeight,
+		GLfloat red, GLfloat green, GLfloat blue,
+		GLfloat aIntensity, GLfloat dIntensity);
 
+	ShadowMap* GetShadowMap() { return shadowMap; }
 	~Light();
 
 protected:
@@ -20,7 +25,9 @@ protected:
 	GLfloat ambientIntensity;
 	GLfloat diffuseIntensity;
 
+	glm::mat4 lightProj;
 
+	ShadowMap* shadowMap;
 
 
 

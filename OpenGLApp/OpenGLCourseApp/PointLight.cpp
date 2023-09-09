@@ -10,7 +10,7 @@ PointLight::PointLight():Light()
 PointLight::PointLight(GLfloat red, GLfloat green, GLfloat blue, 
 	GLfloat aIntensity, GLfloat dIntensity,
 	GLfloat xPos, GLfloat yPos, GLfloat zPos, 
-	GLfloat con, GLfloat lin, GLfloat exp):Light(red,green,blue,aIntensity,dIntensity)//superclass called first then the below class
+	GLfloat con, GLfloat lin, GLfloat exp):Light(1024,1024,red,green,blue,aIntensity,dIntensity)//superclass called first then the below class
 {
 	position = glm::vec3(xPos, yPos, zPos);
 	constant = con;

@@ -7,6 +7,11 @@
 
 #include <GL\glew.h>
 
+#include <glm\glm.hpp>
+#include <glm\gtc\matrix_transform.hpp>
+#include <glm\gtc\type_ptr.hpp>
+
+
 #include"DirectionalLight.h"
 #include"PointLight.h"//we importing these here so instead of calling the shaders location of  various variable repeatedly we call it here only
 #include"CommonValues.h"
@@ -40,6 +45,10 @@ public:
 	void SetPointLights(PointLight* pLight, unsigned int lightCount);
 	void SetSpotLights(SpotLight* sLight, unsigned int lightCount);
 
+	void SetTexture(GLuint textureUnit);
+	void SetDirectionalShadowMap(GLuint textureUnit);
+	void SetDirectonalLightTransform(glm::mat4* lTransform);
+
 	void UseShader();
 	void ClearShader();
 
@@ -49,9 +58,10 @@ private:
 	int pointLightCount;
 	int spotLightCount;
 	GLuint shaderID, uniformProjection, uniformModel, uniformView,
-		uniformEyePosition,uniformSpecularIntensity,uniformShininess;
+		uniformEyePosition,uniformSpecularIntensity,uniformShininess,
+		uniformTexture,
+		uniformDirectionalLightTransform,uniformDirectionalShadowMap;
 
-	GLuint uniformPointLightCount;
 
 	//for several lights we need multiple location variable so instead we create struct array to handle multiple light
 
@@ -74,6 +84,7 @@ private:
 		GLuint uniformExponent;
 	} uniformPointLight[MAX_POINT_LIGHTS];
 
+	GLuint uniformPointLightCount;
 
 	GLuint uniformSpotLightCount;
 	struct {
