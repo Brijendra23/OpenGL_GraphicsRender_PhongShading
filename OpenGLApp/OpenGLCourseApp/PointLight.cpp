@@ -8,7 +8,7 @@ PointLight::PointLight():Light()
 	exponent = 0.0f;
 }
 PointLight::PointLight(GLuint shadowWidth, GLuint shadowHeight,
-						GLfloat nearPlane, GLfloat farP, 
+						GLfloat near, GLfloat far, 
 						GLfloat red, GLfloat green, GLfloat blue,
 						GLfloat aIntensity, GLfloat dIntensity,
 						GLfloat xPos, GLfloat yPos, GLfloat zPos, 
@@ -18,11 +18,12 @@ PointLight::PointLight(GLuint shadowWidth, GLuint shadowHeight,
 	constant = con;
 	linear = lin;
 	exponent = exp;
-	farPlane = farP;
+
 
 	float aspect = (float)shadowWidth / (float)shadowHeight;//calculating the aspect ratios so that it does not shange an remains same for every cube plus always come out to be one
 
-	lightProj = glm::perspective(glm::radians(90.0f), aspect, nearPlane, farPlane);
+	farPlane = far;
+	lightProj = glm::perspective(glm::radians(90.0f), aspect, near, far);
 
 	shadowMap = new OmniShadowMap();
 	shadowMap->Init(shadowWidth, shadowHeight);
@@ -40,7 +41,7 @@ void PointLight::UseLight(GLuint ambientIntensityLocation, GLuint ambientColourL
 	glUniform3f(positionLocation, position.x,position.y,position.z);
 	glUniform1f(constantLocation, constant);
 	glUniform1f(linearLocation, linear);
-	glUniform1f(constantLocation, constant);
+	glUniform1f(exponentLocation, exponent);
 
 
 }
@@ -56,20 +57,20 @@ glm::vec3 PointLight::GetPosition()
 
 std::vector<glm::mat4> PointLight::CalculateLightTransform()
 {
-	std::vector<glm::mat4> lightMatrices;
+	std::vector<glm::mat4> lightTransforms;
 	//+x,-x
-	lightMatrices.push_back(lightProj * glm::lookAt(position, position + glm::vec3(1.0, 0.0, 0.0), glm::vec3(0.0, -1.0, 0.0)));
-	lightMatrices.push_back(lightProj * glm::lookAt(position, position + glm::vec3(-1.0, 0.0, 0.0), glm::vec3(0.0, -1.0, 0.0)));
+	lightTransforms.push_back(lightProj * glm::lookAt(position, position + glm::vec3(1.0, 0.0, 0.0), glm::vec3(0.0, -1.0, 0.0)));
+	lightTransforms.push_back(lightProj * glm::lookAt(position, position + glm::vec3(-1.0, 0.0, 0.0), glm::vec3(0.0, -1.0, 0.0)));
 
 	//+y,-y
-	lightMatrices.push_back(lightProj * glm::lookAt(position, position + glm::vec3(0.0, 1.0, 0.0), glm::vec3(0.0, 0.0, 1.0)));
-	lightMatrices.push_back(lightProj * glm::lookAt(position, position + glm::vec3(0.0, -1.0, 0.0), glm::vec3(0.0, 0.0, -1.0)));
+	lightTransforms.push_back(lightProj * glm::lookAt(position, position + glm::vec3(0.0, 1.0, 0.0), glm::vec3(0.0, 0.0, 1.0)));
+	lightTransforms.push_back(lightProj * glm::lookAt(position, position + glm::vec3(0.0, -1.0, 0.0), glm::vec3(0.0, 0.0, -1.0)));
 
 	//+z -z
-	lightMatrices.push_back(lightProj * glm::lookAt(position, position + glm::vec3(0.0, 0.0, 1.0), glm::vec3(0.0, -1.0, 0.0)));
-	lightMatrices.push_back(lightProj * glm::lookAt(position, position + glm::vec3(0.0, 0.0, -1.0), glm::vec3(0.0, -1.0, 0.0)));
+	lightTransforms.push_back(lightProj * glm::lookAt(position, position + glm::vec3(0.0, 0.0, 1.0), glm::vec3(0.0, -1.0, 0.0)));
+	lightTransforms.push_back(lightProj * glm::lookAt(position, position + glm::vec3(0.0, 0.0, -1.0), glm::vec3(0.0, -1.0, 0.0)));
 
-	return lightMatrices;
+	return lightTransforms;
 }
 
 
