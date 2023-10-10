@@ -27,7 +27,7 @@ SpotLight::SpotLight(GLuint shadowWidth, GLuint shadowHeight,
 
 void SpotLight::Toggle()
 {
-	isOn != isOn;
+	isOn = !isOn;
 }
 
 void SpotLight::UseLight(GLuint ambientIntensityLocation, GLuint ambientColourLocation, GLuint diffuseIntensityLocation,

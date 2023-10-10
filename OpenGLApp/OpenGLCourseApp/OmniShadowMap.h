@@ -1,5 +1,7 @@
 #pragma once
 #include "ShadowMap.h"
+#include<GL/glew.h>
+#include<stdio.h>
 class OmniShadowMap :
     public ShadowMap
 {
