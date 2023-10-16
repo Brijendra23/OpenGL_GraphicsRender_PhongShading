@@ -78,3 +78,12 @@ CMakeFiles/
 
 # ImGui
 imgui.ini
+/build
+/bin
+/debug
+/x64
+/.vs
+/OpenGLCourseApp.sln
+/OpenGLCourseApp.vcxproj
+/OpenGLCourseApp.vcxproj.filters
+/OpenGLCourseApp.vcxproj.user
