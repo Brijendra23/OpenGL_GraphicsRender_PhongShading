@@ -83,7 +83,7 @@ imgui.ini
 /debug
 /x64
 /.vs
-/OpenGLCourseApp.sln
-/OpenGLCourseApp.vcxproj
-/OpenGLCourseApp.vcxproj.filters
-/OpenGLCourseApp.vcxproj.user
+/OpenGLApp/OpenGLCourseApp.sln
+/OpenGLApp/OpenGLCourseApp.vcxproj
+/OpenGLApp//OpenGLCourseApp.vcxproj.filters
+/OpenGLApp//OpenGLCourseApp.vcxproj.user
